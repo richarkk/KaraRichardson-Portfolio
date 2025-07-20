@@ -29,9 +29,11 @@ Welcome to my professional data and business analytics portfolio. I specialize i
 Explore my Snowflake-native Streamlit app for interactive policy document analysis.
 
 [Launch the App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
+
 ---
 ## 🧩 Daily Task Tracker App
 Built with Streamlit + Snowflake
+
 [Launch App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/SNOWFLAKE_LEARNING_DB.PUBLIC.FUJPSM0G5N21KW3V?ref=snowsight_shared)
 
 This lightweight app supports daily planning, time-blocking, and productivity insights by capturing start and end times for individual tasks. Designed with a clean, minimal interface, it allows for intuitive logging while surfacing high-level daily summaries (e.g., task completion rates, durations). Developed as part of a broader portfolio on ethical and impactful analytics design.
