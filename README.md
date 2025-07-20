@@ -28,7 +28,7 @@ Welcome to my professional data and business analytics portfolio. I specialize i
 
 Explore my Snowflake-native Streamlit app for interactive policy document analysis.
 
-[Launch the App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
+[Launch App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
 
 ---
 ## 🧩 Daily Task Tracker App
