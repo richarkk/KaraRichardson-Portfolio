@@ -1,0 +1,149 @@
+# Import required libraries.
+# Need to add the "snowflake.core" package.
+import streamlit as st
+from snowflake.snowpark.context import get_active_session
+from snowflake.core import Root
+import pandas as pd
+import json
+
+# Removes the limit on text displayed from a dataframe.
+# So, you can see the full "chunk" (later).
+pd.set_option("max_colwidth",None)
+
+# Define the number of chunks to share with the LLM.
+# (You can modify this to see the impact on accuracy.)
+num_chunks = 4
+
+# Define the columns to return from the search.
+columns = ["chunk", "relative_path"]
+
+# Connect to our database and search service.
+session = get_active_session()
+root = Root(session)                         
+svc = root.databases['policy_documents'].schemas['public'].cortex_search_services['policy_search']
+
+# Functions support readability, reusability, organization, etc.
+
+# Create a sidebar.
+def config_options():
+
+    st.sidebar.selectbox('Select model:',('mistral-large2',
+                                          'llama3.3-70b',
+                                          'claude-3-5-sonnet'), key="model_name")
+
+    st.sidebar.expander("Session State").write(st.session_state)
+    st.session_state.rag = st.sidebar.checkbox('Only use company policies?')
+
+# Call the Cortex search service ("policy_search").
+# Retrieve and display similar chunks.
+def get_similar_chunks_search_service(query):
+
+    response = svc.search(query, columns, limit=num_chunks)
+    st.sidebar.json(response.json()) 
+    return response.json()
+
+# Formulate the prompt.
+def create_prompt(myquestion):
+
+    # When RAG is chosen...
+    if st.session_state.rag == 1:
+        
+        # Pull the relevant chunks (from earlier).
+        prompt_context = get_similar_chunks_search_service(myquestion)
+
+        # Define the prompt.
+        prompt = f"""
+           You are an expert chat assistant.
+           Extract context provided between the <context> and </context> tags.
+           When answering the question between the <question> and </question> tags,
+           be concise and friendly. 
+           If you don´t have the information, say so.
+           Only answer the question if you can extract it from the context.
+           Do not mention the context used in your answer.
+    
+           <context>          
+           {prompt_context}
+           </context>
+           
+           <question>  
+           {myquestion}
+           </question>
+           
+           Answer: 
+           """
+
+        json_data = json.loads(prompt_context)
+        relative_paths = set(item['relative_path'] for item in json_data['results'])
+        
+ # When RAG is NOT chosen...
+    else:     
+        
+        # Do NOT provide prompt instructions or chunks.
+        prompt = f"""[0]
+         'Question:  
+          {myquestion} 
+          Answer: '
+          """
+        relative_paths = "None"
+            
+    return prompt, relative_paths
+
+# This is the CORE function.
+# It takes the INPUTS and uses the LLM to respond ("complete").
+def complete(myquestion):
+
+    # Calls the function to create the prompt.
+    prompt, relative_paths = create_prompt(myquestion)
+    
+    # Calls Snowflake Cortex's "complete" function.
+    cmd = """SELECT snowflake.cortex.complete(?, ?) AS response"""
+
+    # Execute SQL with Snowflake (to put it all together).    
+    df_response = session.sql(cmd, params=[st.session_state.model_name, prompt]).collect()
+    return df_response, relative_paths
+
+# Run the primary function, which creates the UI and triggers other functions.
+def main():
+
+    # Add a header at the top of the app.
+    st.title(f":speech_balloon: Employee Assistant")
+
+    # Provides instructions.
+    st.write("In the box below, type in your policy related question. Check the sidebar on the left side for links to the relevant documents.")
+
+    # Generate the sidebar with options.
+    config_options() 
+  
+
+    # Create a textbox with an example question.
+    question = st.text_input("Enter question",
+                             placeholder="Can I use my personal laptop for work?",
+                             label_visibility="collapsed")
+
+ # If the user types a question
+    if question:
+
+        # Call the core "complete" function.
+        # And extract the response from the dataframe.
+        response, relative_paths = complete(question)
+        res_text = response[0].RESPONSE
+        st.markdown(res_text)
+
+        # Display the related chunks in the sidebar (if RAG was used).
+        if relative_paths != "None":
+            with st.sidebar.expander("Related Documents"):
+                for path in relative_paths:
+                    cmd2 = f"select GET_PRESIGNED_URL(@source_files, '{path}', 360) as URL_LINK from directory(@source_files)"
+                    df_url_link = session.sql(cmd2).to_pandas()
+                    url_link = df_url_link._get_value(0,'URL_LINK')
+                    display_url = f"Doc: [{path}]({url_link})"
+                    st.sidebar.markdown(display_url)
+
+# Only run main() function if script is executed directly.
+if __name__ == "__main__":
+    main()
+
+
+
+
+
