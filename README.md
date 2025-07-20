@@ -24,6 +24,11 @@ Welcome to my professional data and business analytics portfolio. I specialize i
   Python, SQL, Streamlit, Tableau—and the judgment to know which tool fits which challenge.
 
 ---
+## 🔗 Streamlit App: Policy Documents Viewer
+
+Explore my Snowflake-native Streamlit app for interactive policy document analysis.
+
+[Launch the App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
 
 ## 💡 My Mission
 
