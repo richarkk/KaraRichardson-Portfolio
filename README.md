@@ -21,12 +21,12 @@ Welcome to my professional data and business analytics portfolio. I specialize i
   Notebooks and dashboards built to communicate insights clearly to executives and stakeholders.
 
 - 🛠️ **Skills & Tools Snapshot**  
-  Python, SQL, Streamlit, Tableau—and the judgment to know which tool fits which challenge.
+  Python, SQL, Streamlit, Tableau and the judgment to know which tool fits which challenge.
 
 ---
 ## 🔗 Streamlit App: Policy Documents Viewer
 
-Explore my Snowflake-native Streamlit app for interactive policy document analysis.
+Explore my Snowflake native Streamlit app for interactive policy document analysis.
 
 [Launch App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
 
@@ -41,7 +41,7 @@ This lightweight app supports daily planning, time-blocking, and productivity in
 ## Key Features:
 - 📌 Time-based task tracking with auto-calculated durations
 - 📊 Real-time progress feedback and summary metrics
-- 💡 Built with Snowflake-native hosting to support future scale and secure deployment
+- 💡 Built with Snowflake native hosting to support future scale and secure deployment
 Ethical Design Principles:
 - Prioritizes transparency in workflow habits
 - Encourages intentional planning to reduce burnout
