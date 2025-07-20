@@ -30,6 +30,20 @@ Explore my Snowflake-native Streamlit app for interactive policy document analys
 
 [Launch the App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared)
 
+🧩 Daily Task Tracker App
+Built with Streamlit + Snowflake
+Link: Launch App
+This lightweight app supports daily planning, time-blocking, and productivity insights by capturing start and end times for individual tasks. Designed with a clean, minimal interface, it allows for intuitive logging while surfacing high-level daily summaries (e.g., task completion rates, durations). Developed as part of a broader portfolio on ethical and impactful analytics design.
+Key Features:
+- 📌 Time-based task tracking with auto-calculated durations
+- 📊 Real-time progress feedback and summary metrics
+- 💡 Built with Snowflake-native hosting to support future scale and secure deployment
+Ethical Design Principles:
+- Prioritizes transparency in workflow habits
+- Encourages intentional planning to reduce burnout
+- Future extensibility for tracking alignment with values-based priorities
+
+
 ## 💡 My Mission
 
 To shape the future of Responsible AI and analytics by embedding ethical design and strategic thinking into every stage of the pipeline.
