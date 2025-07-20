@@ -1,7 +1,7 @@
 
 # 🌐 Kara’s Analytics Portfolio
 
-[![Streamlit App]([https://img.shields.io/badge/Streamlit-Launch%20App-ff4b4b?style=flat-square&logo=streamlit)](https://streamlit.io/](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9))
+[![Streamlit App]([[https://img.shields.io/badge/Streamlit-Launch%20App-ff4b4b?style=flat-square&logo=streamlit)](https://streamlit.io/](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9)](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/POLICY_DOCUMENTS.PUBLIC.EBB6N41NVR3VQHO9?ref=snowsight_shared))
 [![GitHub Last Commit](https://img.shields.io/github/last-commit/yourusername/kara-portfolio?style=flat-square)](https://github.com/yourusername/kara-portfolio)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 
