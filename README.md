@@ -32,7 +32,7 @@ Explore my Snowflake-native Streamlit app for interactive policy document analys
 
 🧩 Daily Task Tracker App
 Built with Streamlit + Snowflake
-Link: Launch App
+Link: [Launch App](https://app.snowflake.com/xcwvuun/go02139/#/streamlit-apps/SNOWFLAKE_LEARNING_DB.PUBLIC.FUJPSM0G5N21KW3V?ref=snowsight_shared)
 This lightweight app supports daily planning, time-blocking, and productivity insights by capturing start and end times for individual tasks. Designed with a clean, minimal interface, it allows for intuitive logging while surfacing high-level daily summaries (e.g., task completion rates, durations). Developed as part of a broader portfolio on ethical and impactful analytics design.
 Key Features:
 - 📌 Time-based task tracking with auto-calculated durations
